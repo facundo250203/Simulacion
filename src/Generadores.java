@@ -120,9 +120,10 @@ public class Generadores {
 
     private void congruencialAditivo(Scanner teclado) {
         ArrayList<Integer> numerosInternos = new ArrayList<>();
-
-        for (int i = 0; i < 4; i++) {
-            System.out.println("Ingrese semillas (n) ("+(i)+" de 3): ");
+        System.out.println("Ingrese cantidad de semillas: ");
+        int cantidadSemillas = teclado.nextInt();
+        for (int i = 0; i < cantidadSemillas; i++) {
+            System.out.println("Ingrese semillas (n) ("+(i)+"): ");
             int n = teclado.nextInt();
             numerosInternos.add(n);
         }
@@ -132,12 +133,12 @@ public class Generadores {
         int cantidad = teclado.nextInt();
 
         for (int i = 0; i < cantidad; i++) {
-            int resultado = (numerosInternos.get(i) + numerosInternos.get(i + 3)) % m;
+            int resultado = (numerosInternos.get(i) + numerosInternos.get(numerosInternos.size()-1)) % m;
             numerosInternos.add(resultado);
             float mostrar = (float) resultado / m;
             float truncado = (float) ((int) (mostrar * 1000)) / 1000;
 
-            System.out.println("Valor de N"+(i+4)+": " + resultado);
+            System.out.println("Valor de u"+(i+1)+": " + resultado);
             System.out.println("Valor generado: " + truncado);
             System.out.println("\n");
             numeros.add(truncado);

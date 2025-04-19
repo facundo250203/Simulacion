@@ -20,6 +20,7 @@ public class Main {
             System.out.println("2. Generadores pseudoaleatorios");
             System.out.println("3. Pruebas estadisticas");
             System.out.println("4. Mostrar numeros actuales");
+            System.out.println("5. Borrar numeros actuales");
             System.out.println("0. Salir");
 
             opcion = teclado.nextInt();
@@ -37,6 +38,9 @@ public class Main {
                     break;
                 case 4:
                     mostrarNumeros();
+                    break;
+                case 5:
+                    borrarNumeros();
                     break;
                 case 0:
                     System.out.println("Hasta luego");
@@ -71,6 +75,14 @@ public class Main {
         }
     }
 
+    private static void borrarNumeros(){
+        if(numeros.isEmpty()){
+            System.out.println("NO HAY NUMEROS A BORRAR, INGRESE VALORES PRIMERO");
+            return;
+        }
+        numeros.clear();
+        System.out.println("SE HAN BORRADO TODOS LOS NUMEROS");
+    }
 }
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or

@@ -25,19 +25,29 @@ public class Pruebas {
 
             switch (opcion) {
                 case 1:
-                    promedio(teclado);
+                    if(listaVacia()){
+                        promedio(teclado);
+                    }
                     break;
                 case 2:
-                    frecuencia(teclado);
+                    if(listaVacia()){
+                        frecuencia(teclado);
+                    }
                     break;
                 case 3:
-                    serie(teclado);
+                    if(listaVacia()){
+                        serie(teclado);
+                    }
                     break;
                 case 4:
-                    kS(teclado);
+                    if(listaVacia()){
+                        kS(teclado);
+                    }
                     break;
                 case 5:
-                    corrida(teclado);
+                    if(listaVacia()){
+                        corrida(teclado);
+                    }
                     break;
                 case 0:
                     break;
@@ -57,7 +67,6 @@ public class Pruebas {
         for(int i=0;i<numeros.size();i++){
             suma = suma + numeros.get(i);
         }
-        System.out.println(suma);
         promedio = suma/numeros.size();
         System.out.println("X (media):"+promedio);
         float prueba1 = (float) ((promedio - 0.5)*Math.sqrt(numeros.size()));
@@ -170,15 +179,20 @@ public class Pruebas {
         numeros.sort(null);
         ArrayList<Float> distribucionAcumulada = new ArrayList<>();
         for(int i=1;i<=n;i++){
-        distribucionAcumulada.add((float) i/n);
+            float valor = (float) i / n;
+            valor = (float) (Math.floor(valor * 1000) / 1000);
+            distribucionAcumulada.add(valor);
         }
 
         ArrayList<Float> dnList = new ArrayList<>();
         for(int i=0;i<n;i++){
-            dnList.add(distribucionAcumulada.get(i)-numeros.get(i));
+            float diferencia = distribucionAcumulada.get(i) - numeros.get(i);
+            diferencia = (float) (Math.floor(diferencia * 1000) / 1000);
+            dnList.add(diferencia);
         }
 
         float dn = Collections.max(dnList);
+        dn = (float) (Math.floor(dn * 1000) / 1000);
         System.out.println("Dn: "+dn);
 
         if(dn<da){
@@ -291,6 +305,13 @@ public class Pruebas {
         }
     }
 
+    private Boolean listaVacia(){
+        if(numeros.isEmpty()){
+            System.out.println("NO HAY NUMEROS A PROBAR");
+            return false;
+        }
+        return true;
+    }
 }
 
 
